@@ -987,6 +987,7 @@ def customer_check_supplier_products(id):
 
 @app.errorhandler(404)
 def page_not_found(e):
+    from urllib.parse import unquote
     template = '''
         {%% block body %%}
         <div class="center-content error">
@@ -995,5 +996,5 @@ def page_not_found(e):
         <h3>这里什么都没有呢٩(๑❛ᴗ❛๑)۶</h3>
         </div>
         {%% endblock %%}
-        ''' % (request.url)
+        ''' % (unquote(request.url))
     return render_template_string(template), 404
