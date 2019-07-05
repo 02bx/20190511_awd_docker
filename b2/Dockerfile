@@ -27,6 +27,7 @@ RUN groupadd glzjin && \
     sed -i 's/^glzjin:!/glzjin:'$password'/g' /etc/shadow
 
 RUN mkdir /home/glzjin/Flaskshop
+RUN mkdir /home/glzjin/Flaskshop/taobao/static/uploads
 COPY ./Flaskshop/ /home/glzjin/Flaskshop/
 RUN chown -R glzjin:glzjin /home/glzjin/Flaskshop/
 
