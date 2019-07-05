@@ -27,8 +27,8 @@ RUN groupadd glzjin && \
     sed -i 's/^glzjin:!/glzjin:'$password'/g' /etc/shadow
 
 RUN mkdir /home/glzjin/Flaskshop
-RUN mkdir /home/glzjin/Flaskshop/taobao/static/uploads
 COPY ./Flaskshop/ /home/glzjin/Flaskshop/
+RUN mkdir /home/glzjin/Flaskshop/taobao/static/uploads
 RUN chown -R glzjin:glzjin /home/glzjin/Flaskshop/
 
 RUN echo 'flag{glzjin_wants_a_girl_friend}' > /flag.txt
