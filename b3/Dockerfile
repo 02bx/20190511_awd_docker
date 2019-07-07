@@ -11,6 +11,11 @@ RUN debconf-set-selections /tmp/mysql-passwd && apt install mysql-server -y
 RUN rm -rf /tmp/mysql-passwd
 RUN apt install php libapache2-mod-php php-mcrypt php-mysql php-gd -y
 
+RUN apt install python3 -y
+RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+RUN python3 /tmp/get-pip.py
+RUN pip3 install requests -i https://pypi.douban.com/simple
+
 ADD init_db.sh /tmp/init_db.sh
 RUN chmod u+x /tmp/init_db.sh
 ADD ./init.sql /root/

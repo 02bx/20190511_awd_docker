@@ -32,6 +32,13 @@ RUN useradd -g www-data glzjin -m && \
     password=$(openssl passwd -1 -salt 'abcdefg' '123456') && \
     sed -i 's/^glzjin:!/glzjin:'$password'/g' /etc/shadow
 
+
+RUN apt install python3 -y
+RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+RUN python3 /tmp/get-pip.py
+RUN pip3 install requests -i https://pypi.douban.com/simple
+
+
 RUN chmod -R 777 /var/www/html
 
 RUN mkdir /var/run/sshd

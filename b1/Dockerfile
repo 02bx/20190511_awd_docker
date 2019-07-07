@@ -16,6 +16,13 @@ COPY ./flag.txt /flag.txt
 COPY ./calculator /home/glzjin/calculator
 COPY ./ctf.xinetd /etc/xinetd.d/ctf
 
+
+RUN apt install python3 -y
+RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+RUN python3 /tmp/get-pip.py
+RUN pip3 install requests -i https://pypi.douban.com/simple
+
+
 RUN chown glzjin:glzjin /home/glzjin/calculator && chmod 777 /home/glzjin/calculator
 
 RUN echo 'ctf - nproc 1500' >>/etc/security/limits.conf
